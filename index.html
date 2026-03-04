@@ -90,7 +90,7 @@
                 Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
 
             <fieldset class="fieldset  mt-5 gap-5">
-                
+
 
                 <!-- <label class="label">Email</label> -->
                 <input type="text" class="input" placeholder="Enter Your Name" />
@@ -106,7 +106,7 @@
             <img src="./assets/hero-student.png" alt="">
         </div>
     </section>
- 
+
     <!-- vocabularies section -->
     <section>
         <h2 class="text-4xl font-bold mb-8 text-center">
@@ -116,21 +116,35 @@
 
         </div>
     </section>
-     
-    <!-- world-cantainer -->
-    <section id="words-container" class="bg-gray-100 p-10 w-11/12 mx-auto my-10 grid grid-cols-3 gap-5">
-        
 
+    <!-- world-cantainer -->
+    <section id="words-container" class="bg-gray-100 p-10 w-11/12 mx-auto my-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <!-- lesson no selected section -->
         <div class="text-center col-span-full py-10 space-y-6">
             <p class="font-bangla text-xl font-medium text-gray-400">আপনি এখনো কোন Lesson Select করেন নি</p>
             <h2 class="font-bangla font-bold text-4xl ">একটি Lesson Select করুন।</h2>
-            
+
         </div>
 
     </section>
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div id="deltails-container" class="space-y-6">
+                
+            </div>
+            <div class="modal-action justify-start">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn  bg-[#422AD5] text-white">Complete Learning</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
-
-    <script  src="./script/index.js"></script>
+    <script src="./script/index.js"></script>
 </body>
 
 </html>
