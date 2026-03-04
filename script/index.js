@@ -1,3 +1,16 @@
+const createElements = (arr) => {
+    const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`)
+   return htmlElements.join(" ")
+}
+const manageSpinner =(status) =>{
+  if(status== true){
+    document.getElementById('spinner').classList.remove("hidden")
+    document.getElementById('words-container').classList.add("hidden")
+  }else{
+      document.getElementById('words-container').classList.remove("hidden")
+    document.getElementById('spinner').classList.add("hidden")
+  }
+}
 const loadLesson = () => {
     fetch('https://openapi.programming-hero.com/api/levels/all')
         .then(res => res.json())
@@ -11,7 +24,7 @@ const removeAtive = () => {
     // console.log(activeButton)
 }
 const loadLavelWorld = (id) => {
-    // console.log(id)
+    manageSpinner(true)
     const url = `https://openapi.programming-hero.com/api/level/${id}`
     fetch(url)
         .then(res => res.json())
@@ -29,7 +42,7 @@ const loadWordDetail = async (id) => {
     //   console.log(url)
     const res = await fetch(url);
     const deltails = await res.json()
-    displayWorldDeltails(deltails.data)
+     displayWorldDeltails(deltails.data)
 }
 const displayWorldDeltails = (word) => {
     console.log(word)
@@ -48,11 +61,9 @@ const displayWorldDeltails = (word) => {
                 </div>
                 <div>
                     <h2 class=" font-bold">সমার্থক শব্দ গুলো</h2>
-                    <span class="btn">${word.synonyms[0]}</span>
-                    <span class="btn">${word.synonyms[1]}</span>
-                    <span class="btn">${word.synonyms[2]}</span>
+                   <div>${createElements(word.synonyms)}</div>
                 </div>`
- 
+
     document.getElementById("word_modal").showModal();
 
 }
@@ -66,6 +77,7 @@ const displayLavleWorld = (words) => {
             <p class="font-bangla text-xl font-medium text-gray-400">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
             <h2 class="font-bangla font-bold text-4xl ">নেক্সট Lesson এ যান</h2>
         </div>`
+        manageSpinner(false)
         return
     }
     words.forEach(word => {
@@ -85,6 +97,7 @@ const displayLavleWorld = (words) => {
         </div> `
         wordsCoantainer.append(card)
     });
+    manageSpinner(false);
 }
 const displayLesson = (lessons) => {
     // 1: get the container & empty
@@ -106,9 +119,6 @@ const displayLesson = (lessons) => {
         //      4: appent into container
         laverContainer.append(btnDiv)
     }
-
-
-    // console.log(lesson)
 
 }
 loadLesson()
