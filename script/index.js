@@ -145,3 +145,11 @@ document.getElementById("btn-search").addEventListener("click",()=>{
 
     });
 })
+
+
+const learnBtn = document.getElementById("learn");
+const vocabulariesSection = document.getElementById("vocabularies-section");
+learnBtn.addEventListener("click", function(e) {
+  e.preventDefault()
+  vocabulariesSection.scrollIntoView({ behavior: "smooth" });
+});
